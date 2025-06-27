@@ -1,47 +1,56 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { Container, Nav, Button, Navbar } from 'react-bootstrap';
 import AllCourses from './AllCourses';
+import { motion } from 'framer-motion';
 
 const Home = () => {
    return (
       <>
-         <Navbar expand="lg" className="bg-body-tertiary">
+         <Navbar expand="lg" bg="dark" variant="dark" sticky="top" className="shadow-sm">
             <Container fluid>
-               <Navbar.Brand><h2>Study App</h2></Navbar.Brand>
+               <Navbar.Brand as={Link} to="/">
+                  <h2 className="fw-bold text-warning">🎓 LearnHub</h2>
+               </Navbar.Brand>
                <Navbar.Toggle aria-controls="navbarScroll" />
                <Navbar.Collapse id="navbarScroll">
-                  <Nav
-                     className="me-auto my-2 my-lg-0"
-                     style={{ maxHeight: '100px' }}
-                     navbarScroll
-                  >
+                  <Nav className="ms-auto gap-4 align-items-center">
+                     <Link className="text-white nav-link" to="/">Home</Link>
+                     <Link className="text-white nav-link" to="/login">Login</Link>
+                     <Link className="text-white nav-link" to="/register">Register</Link>
                   </Nav>
-                  <Nav>
-                     <Link to={'/'}>Home</Link>
-                     <Link to={'/login'}>Login</Link>
-                     <Link to={'/register'}>Register</Link>
-                  </Nav>
-
                </Navbar.Collapse>
             </Container>
          </Navbar>
 
-         <div id='home-container' className='first-container'>
-            <div className="content-home">
-               <p>Small App, Big Dreams: <br /> Elevating Your Education</p>
-               <Link to={'/register'}><Button variant='warning' className='m-2' size='md'>Explore Courses</Button></Link>
-            </div>
+         {/* Hero Section */}
+         <div id="home-container" className="first-container d-flex align-items-center justify-content-start">
+            <motion.div
+               className="content-home"
+               initial={{ opacity: 0, y: 20 }}
+               animate={{ opacity: 1, y: 0 }}
+               transition={{ duration: 0.6 }}
+            >
+               <p>
+                  <span style={{ fontSize: "3rem", color: "#ff3c00" }}>Small App,</span><br />
+                  <span style={{ fontSize: "2.2rem", color: "#222" }}>Big Dreams:</span><br />
+                  <span style={{ fontSize: "1.6rem", color: "#444" }}>Elevating Your Education 🚀</span>
+               </p>
+               <Link to="/register">
+                  <Button variant="warning" size="lg" className="mt-3 shadow-lg">
+                     Explore Courses
+                  </Button>
+               </Link>
+            </motion.div>
          </div>
 
+         {/* Trending Courses */}
          <Container className="second-container">
-            <h2 className="text-center my-4">Trending Courses</h2>
+            <h2 className="text-center my-5 text-dark fw-bold">🔥 Trending Courses</h2>
             <AllCourses />
          </Container>
       </>
-   )
-}
+   );
+};
 
 export default Home;
-
-

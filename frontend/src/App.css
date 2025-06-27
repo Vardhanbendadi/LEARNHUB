@@ -1,48 +1,52 @@
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
+/* Reset and base styles */
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   border: none;
-  outline: none
+  outline: none;
 }
 
-html,
-body {
+html, body, #root, .App {
   width: 100%;
   height: 100%;
 }
 
-a {
-  color: black;
-  text-decoration: none;
-  margin-right: 20px;
+/* Hide scrollbars in all browsers */
+body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  background: linear-gradient(to bottom right, #fceabb, #f8b500);
+  color: #2d2d2d;
 }
 
-::-webkit-scrollbar {
+body::-webkit-scrollbar {
   display: none;
 }
 
-#root{
-  background-color: rgba(255, 224, 184, 0.523);
+a {
+  color: #000;
+  text-decoration: none;
+  margin-right: 20px;
 }
 
 .App {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-
-
 }
 
 .content {
   flex: 1;
+  padding-bottom: 40px;
 }
 
+/* Hero Section Glass Effect */
 .content .first-container {
-  background-image: url("C:\Users\purne\LEARNING-APP\frontend\src\assests\images\bg.jpg");
+  background-image: url("C:/Users/purne/LEARNING-APP/frontend/src/assests/images/bg.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -55,35 +59,49 @@ a {
 
 .content-home {
   position: absolute;
-  top: 30%;
-  left: 5%;
+  top: 25%;
+  left: 10%;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+}
 
+.content-home:hover {
+  transform: scale(1.03);
 }
 
 .content-home p {
   font-size: 42px;
   font-weight: 800;
   color: rgb(0, 0, 0);
-  letter-spacing: 10px;
+  letter-spacing: 6px;
 }
 
 .content-home button {
-  background-color: white;
-  color: black;
-
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-top: 20px;
+  transition: 0.3s ease;
 }
 
-.card-container,
-.course-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 16px;
+button:hover, .btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .card-container,
 .course-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 1rem;
 }
 
 .filter-container {
@@ -97,62 +115,37 @@ a {
 
 .filter-container input,
 select {
-  border: 1px solid;
+  border: 1px solid #ccc;
   padding: 10px;
   margin: 10px;
-  border-radius: 5px;
+  border-radius: 8px;
 }
 
-.card,
+/* Card Animation */
 .card1 {
-  width: calc(33%-10px);
-  height: 40%;
-}
-
-.read-more-link {
-  cursor: pointer;
-  color: blue;
-  text-decoration: underline;
-}
-
-.card1 {
-  border-radius: 5px;
+  border-radius: 8px;
   width: 300px;
   height: 320px;
   position: relative;
-  border: 1px solid;
+  border: 1px solid #ddd;
   overflow: hidden;
+  background-color: #fff;
+  transition: transform 0.3s ease;
 }
 
-/* Add this CSS to your styles */
-.description-container {
-  width: 100%;
-  overflow-x: auto;
-  /* Enable horizontal scroll if content overflows */
+.card1:hover {
+  transform: scale(1.03);
 }
-
-.description {
-  white-space: nowrap;
-  /* Prevent text from wrapping */
-  overflow: hidden;
-  /* Hide overflowing content */
-  text-overflow: ellipsis;
-  /* Display ellipsis (...) for truncated text */
-  padding: 5px;
-  /* Add padding for better visibility */
-}
-
 
 .card1 .desc {
   width: 100%;
   height: 100%;
-  width: 100%;
-  transition: .5s;
+  transition: 0.5s;
   padding: 10px;
 }
 
 .card1:hover .desc {
-  opacity: .5;
+  opacity: 0.5;
   transform: translateX(30%);
 }
 
@@ -164,8 +157,7 @@ select {
   height: 100%;
   background-image: url('../src/assets/Images/image.png');
   background-size: cover;
-
-  transition: 1.9s;
+  transition: 1.2s;
   transform-origin: left;
   transform: perspective(2000px) rotateY(-90deg);
   border-radius: 5px;
@@ -189,9 +181,7 @@ select {
 
 .card1 .details .center h1 {
   margin: 0;
-  padding: 0;
   color: #ff3636;
-  line-height: 20px;
   font-size: 25px;
   text-transform: uppercase;
 }
@@ -203,20 +193,15 @@ select {
 
 .card1 .details .center p {
   margin: 10px 0;
-  padding: 0;
   color: #262626;
 }
 
 .card1 .details .center ul {
-  margin: 10px auto 0;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
   padding: 0;
-  display: table;
-}
-
-.card1 .details .center ul li {
   list-style: none;
-  margin: 0 5px;
-  float: left;
 }
 
 .card1 .details .center ul li a {
@@ -227,11 +212,24 @@ select {
   height: 30px;
   line-height: 30px;
   text-align: center;
-  transform: .5s;
+  transition: 0.3s;
+  border-radius: 50%;
 }
 
 .card1 .details .center ul li a:hover {
   background: #ff3636;
+}
+
+.description-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.description {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 5px;
 }
 
 .course-content {
@@ -244,7 +242,6 @@ select {
 .course-section {
   width: 50%;
   padding: 20px;
-  box-sizing: border-box;
 }
 
 .course-video {
@@ -255,12 +252,11 @@ select {
   align-items: center;
 }
 
-
-@media (min-width: 940px) {
-  .card {
-    width: calc(25%-10px);
+@media (max-width: 768px) {
+  .course-section,
+  .course-video {
+    width: 100%;
   }
-
 }
 
 .certificate {
@@ -276,22 +272,11 @@ select {
   margin-bottom: 20px;
 }
 
-.certificate .content {
-  margin-bottom: 40px;
-}
-
-.certificate .content h2 {
-  font-size: 20px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  font-weight: bold;
-}
-
+.certificate .content h2,
 .certificate .content h3 {
   font-size: 18px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  font-weight: 700;
+  margin: 10px 0;
+  font-weight: bold;
 }
 
 .certificate .content .date {
@@ -301,16 +286,113 @@ select {
   margin-bottom: 20px;
 }
 
-@media (max-width: 768px) {
-  .course-section {
-    width: 100%;
-    /* Take full width on smaller screens */
-  }
-
-  .course-video {
-    width: 100%;
-    /* Take full width on smaller screens */
-  }
+/* Footer Styling */
+footer {
+  background-color: #343a40;
+  color: white;
+  padding: 1rem 0;
+  text-align: center;
+  font-size: 0.95rem;
+}
+.nav-link {
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: 0.3s ease;
 }
 
+.nav-link:hover {
+  color: #ffc107 !important;
+  transform: scale(1.05);
+}
 
+.content-home {
+  position: absolute;
+  top: 25%;
+  left: 10%;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  max-width: 600px;
+  transition: all 0.4s ease-in-out;
+}
+
+.content-home:hover {
+  transform: scale(1.03);
+}
+/* Glass card for login form */
+.glass-card {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.glass-card:hover {
+  transform: scale(1.02);
+}
+/* Optional: subtle background for dashboard container */
+.bg-light {
+  background-color: #f9f9f9 !important;
+}
+
+/* Add hover effects for smoother UX on dashboard controls/buttons */
+.dashboard-button {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.dashboard-button:hover {
+  transform: scale(1.03);
+  background-color: #f0f0f0;
+}
+.glass-card {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.glass-card:hover {
+  transform: scale(1.02);
+}
+
+.dropdown-menu {
+  width: 100% !important;
+  padding: 0.5rem;
+}
+
+.dropdown-item {
+  font-weight: 500;
+}
+/* Dashboard link styling */
+.dashboard-link {
+  cursor: pointer;
+  font-size: 1.05rem;
+  color: #f8f9fa !important;
+  padding: 6px 10px;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.dashboard-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffc107 !important;
+}
+
+/* Highlight active component (optional feature if you track active state) */
+.dashboard-link.active {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #ffc107 !important;
+}
+/* Optional: Add consistent padding inside home components */
+.container {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
